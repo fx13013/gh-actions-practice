@@ -1,0 +1,32 @@
+name: Lint Test Deploy App
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code from the repo
+        use: actions/checkout@v4
+      - name: Install the dependencies
+        run: npm ci
+      - name: Run Lint
+        run: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code from the repo
+        use: actions/checkout@v4
+      - name: Install the dependencies
+        run: npm ci
+      - name: Run the tests
+        run: npm run test
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code from the repo
+        use: actions/checkout@v4
+      - name: Install the dependencies
+        run: npm ci
+      - name: Build the app
+        run: npm run build
+      - name: Deploy
+        run: echo "Great, you have deploy successfully"
